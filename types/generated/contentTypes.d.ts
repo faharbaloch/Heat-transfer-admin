@@ -788,6 +788,36 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAboutbannerAboutbanner extends Schema.CollectionType {
+  collectionName: 'aboutbanners';
+  info: {
+    singularName: 'aboutbanner';
+    pluralName: 'aboutbanners';
+    displayName: 'aboutbanner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::aboutbanner.aboutbanner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::aboutbanner.aboutbanner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -886,6 +916,40 @@ export interface ApiHomecalltoactionHomecalltoaction
   };
 }
 
+export interface ApiNewsboxNewsbox extends Schema.CollectionType {
+  collectionName: 'newsboxes';
+  info: {
+    singularName: 'newsbox';
+    pluralName: 'newsboxes';
+    displayName: 'newsbox';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    subheading: Attribute.String;
+    subheading2: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::newsbox.newsbox',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::newsbox.newsbox',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -945,6 +1009,68 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
+export interface ApiProductbannerProductbanner extends Schema.CollectionType {
+  collectionName: 'productbanners';
+  info: {
+    singularName: 'productbanner';
+    pluralName: 'productbanners';
+    displayName: 'productbanner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::productbanner.productbanner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::productbanner.productbanner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSliderSlider extends Schema.CollectionType {
+  collectionName: 'sliders';
+  info: {
+    singularName: 'slider';
+    pluralName: 'sliders';
+    displayName: 'slider';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::slider.slider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::slider.slider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   collectionName: 'sub_categories';
   info: {
@@ -986,6 +1112,44 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiTextandbannerTextandbanner extends Schema.CollectionType {
+  collectionName: 'textandbanners';
+  info: {
+    singularName: 'textandbanner';
+    pluralName: 'textandbanners';
+    displayName: 'Textandbanner';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title1: Attribute.String;
+    bannerimg1: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title2: Attribute.String;
+    bannerimg2: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title3: Attribute.String;
+    bannerimg3: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title4: Attribute.String;
+    bannerimg4: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::textandbanner.textandbanner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::textandbanner.textandbanner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1004,11 +1168,16 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::aboutbanner.aboutbanner': ApiAboutbannerAboutbanner;
       'api::category.category': ApiCategoryCategory;
       'api::faq.faq': ApiFaqFaq;
       'api::homecalltoaction.homecalltoaction': ApiHomecalltoactionHomecalltoaction;
+      'api::newsbox.newsbox': ApiNewsboxNewsbox;
       'api::product.product': ApiProductProduct;
+      'api::productbanner.productbanner': ApiProductbannerProductbanner;
+      'api::slider.slider': ApiSliderSlider;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
+      'api::textandbanner.textandbanner': ApiTextandbannerTextandbanner;
     }
   }
 }

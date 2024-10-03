@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "textandbanners",
+  "info": {
+    "singularName": "textandbanner",
+    "pluralName": "textandbanners",
+    "displayName": "Textandbanner",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title1": {
+      "type": "string"
+    },
+    "bannerimg1": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title2": {
+      "type": "string"
+    },
+    "bannerimg2": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "title3": {
+      "type": "string"
+    },
+    "bannerimg3": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "title4": {
+      "type": "string"
+    },
+    "bannerimg4": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

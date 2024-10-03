@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aboutbanners",
+  "info": {
+    "singularName": "aboutbanner",
+    "pluralName": "aboutbanners",
+    "displayName": "aboutbanner"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
