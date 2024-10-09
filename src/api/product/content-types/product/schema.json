@@ -18,7 +18,21 @@
     "description": {
       "type": "text"
     },
-    "featuredimg": {
+    "price": {
+      "type": "integer"
+    },
+    "bannerImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "img1": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -39,53 +53,6 @@
         "videos",
         "audios"
       ]
-    },
-    "price": {
-      "type": "decimal"
-    },
-    "isNew": {
-      "type": "boolean",
-      "default": false
-    },
-    "sub_categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::sub-category.sub-category",
-      "inversedBy": "products"
-    },
-    "products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "mappedBy": "collection"
-    },
-    "bannerImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "color": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "guidelines": {
-      "type": "text"
-    },
-    "specification": {
-      "type": "string"
     },
     "img3": {
       "type": "media",
@@ -120,23 +87,28 @@
         "audios"
       ]
     },
-    "question1": {
+    "guidelines": {
       "type": "text"
     },
-    "answer1": {
-      "type": "text"
+    "colorbook": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "question2": {
-      "type": "text"
+    "specification": {
+      "type": "string"
     },
-    "answer2": {
-      "type": "text"
-    },
-    "qestion3": {
-      "type": "text"
-    },
-    "answer3": {
-      "type": "text"
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "products"
     }
   }
 }

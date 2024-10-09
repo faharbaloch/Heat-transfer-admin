@@ -824,21 +824,13 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     singularName: 'category';
     pluralName: 'categories';
     displayName: 'category';
-    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
-    desc: Attribute.Text;
-    img: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    sub_categories: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::sub-category.sub-category'
-    >;
-    collection: Attribute.Relation<
+    products: Attribute.Relation<
       'api::category.category',
       'manyToMany',
       'api::product.product'
@@ -964,33 +956,21 @@ export interface ApiProductProduct extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     description: Attribute.Text;
-    featuredimg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    price: Attribute.Integer;
+    bannerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    img1: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     img2: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    price: Attribute.Decimal;
-    isNew: Attribute.Boolean & Attribute.DefaultTo<false>;
-    sub_categories: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::sub-category.sub-category'
-    >;
-    products: Attribute.Relation<
+    img3: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    img4: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    img5: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    guidelines: Attribute.Text;
+    colorbook: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    specification: Attribute.String;
+    categories: Attribute.Relation<
       'api::product.product',
       'manyToMany',
       'api::category.category'
     >;
-    bannerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    color: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    guidelines: Attribute.Text;
-    specification: Attribute.String;
-    img3: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    img4: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    img5: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    question1: Attribute.Text;
-    answer1: Attribute.Text;
-    question2: Attribute.Text;
-    answer2: Attribute.Text;
-    qestion3: Attribute.Text;
-    answer3: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1071,47 +1051,6 @@ export interface ApiSliderSlider extends Schema.CollectionType {
   };
 }
 
-export interface ApiSubCategorySubCategory extends Schema.CollectionType {
-  collectionName: 'sub_categories';
-  info: {
-    singularName: 'sub-category';
-    pluralName: 'sub-categories';
-    displayName: 'subCategory';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    products: Attribute.Relation<
-      'api::sub-category.sub-category',
-      'manyToMany',
-      'api::product.product'
-    >;
-    categories: Attribute.Relation<
-      'api::sub-category.sub-category',
-      'manyToMany',
-      'api::category.category'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::sub-category.sub-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::sub-category.sub-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiTextandbannerTextandbanner extends Schema.CollectionType {
   collectionName: 'textandbanners';
   info: {
@@ -1176,7 +1115,6 @@ declare module '@strapi/types' {
       'api::product.product': ApiProductProduct;
       'api::productbanner.productbanner': ApiProductbannerProductbanner;
       'api::slider.slider': ApiSliderSlider;
-      'api::sub-category.sub-category': ApiSubCategorySubCategory;
       'api::textandbanner.textandbanner': ApiTextandbannerTextandbanner;
     }
   }
