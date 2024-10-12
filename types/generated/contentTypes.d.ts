@@ -970,11 +970,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
     img5: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     colorbook: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     specification: Attribute.String;
-    categories: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::category.category'
-    >;
     subcategories: Attribute.Relation<
       'api::product.product',
       'manyToMany',
@@ -983,6 +978,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     img6: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     bannerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     guidelines: Attribute.Text;
+    categories: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

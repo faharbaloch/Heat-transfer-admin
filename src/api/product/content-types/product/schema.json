@@ -101,12 +101,6 @@
     "specification": {
       "type": "string"
     },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "products"
-    },
     "subcategories": {
       "type": "relation",
       "relation": "manyToMany",
@@ -137,6 +131,12 @@
     },
     "guidelines": {
       "type": "text"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "products"
     }
   }
 }
