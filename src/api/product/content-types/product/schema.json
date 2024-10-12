@@ -21,7 +21,7 @@
     "price": {
       "type": "integer"
     },
-    "bannerImage": {
+    "featuredimage": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -87,9 +87,6 @@
         "audios"
       ]
     },
-    "guidelines": {
-      "type": "text"
-    },
     "colorbook": {
       "type": "media",
       "multiple": false,
@@ -109,6 +106,37 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "products"
+    },
+    "subcategories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::subcategory.subcategory",
+      "inversedBy": "products"
+    },
+    "img6": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "bannerImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "guidelines": {
+      "type": "text"
     }
   }
 }

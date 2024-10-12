@@ -835,6 +835,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToMany',
       'api::product.product'
     >;
+    subcategories: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::subcategory.subcategory'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -957,13 +962,12 @@ export interface ApiProductProduct extends Schema.CollectionType {
     title: Attribute.String;
     description: Attribute.Text;
     price: Attribute.Integer;
-    bannerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    featuredimage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     img1: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     img2: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     img3: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     img4: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     img5: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    guidelines: Attribute.Text;
     colorbook: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     specification: Attribute.String;
     categories: Attribute.Relation<
@@ -971,6 +975,14 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >;
+    subcategories: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::subcategory.subcategory'
+    >;
+    img6: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    bannerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    guidelines: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1051,6 +1063,47 @@ export interface ApiSliderSlider extends Schema.CollectionType {
   };
 }
 
+export interface ApiSubcategorySubcategory extends Schema.CollectionType {
+  collectionName: 'subcategories';
+  info: {
+    singularName: 'subcategory';
+    pluralName: 'subcategories';
+    displayName: 'Subcategory';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    products: Attribute.Relation<
+      'api::subcategory.subcategory',
+      'manyToMany',
+      'api::product.product'
+    >;
+    categories: Attribute.Relation<
+      'api::subcategory.subcategory',
+      'manyToMany',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subcategory.subcategory',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subcategory.subcategory',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTextandbannerTextandbanner extends Schema.CollectionType {
   collectionName: 'textandbanners';
   info: {
@@ -1115,6 +1168,7 @@ declare module '@strapi/types' {
       'api::product.product': ApiProductProduct;
       'api::productbanner.productbanner': ApiProductbannerProductbanner;
       'api::slider.slider': ApiSliderSlider;
+      'api::subcategory.subcategory': ApiSubcategorySubcategory;
       'api::textandbanner.textandbanner': ApiTextandbannerTextandbanner;
     }
   }
