@@ -818,6 +818,46 @@ export interface ApiAboutbannerAboutbanner extends Schema.CollectionType {
   };
 }
 
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    products: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::product.product'
+    >;
+    subcategories: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::subcategory.subcategory'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Schema.CollectionType {
   collectionName: 'faqs';
   info: {
@@ -938,6 +978,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     img6: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     bannerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     guidelines: Attribute.Text;
+    categories: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1036,6 +1081,11 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'manyToMany',
       'api::product.product'
     >;
+    categories: Attribute.Relation<
+      'api::subcategory.subcategory',
+      'manyToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1111,6 +1161,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::aboutbanner.aboutbanner': ApiAboutbannerAboutbanner;
+      'api::category.category': ApiCategoryCategory;
       'api::faq.faq': ApiFaqFaq;
       'api::homecalltoaction.homecalltoaction': ApiHomecalltoactionHomecalltoaction;
       'api::newsbox.newsbox': ApiNewsboxNewsbox;

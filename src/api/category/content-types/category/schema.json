@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "subcategories",
+  "collectionName": "categories",
   "info": {
-    "singularName": "subcategory",
-    "pluralName": "subcategories",
-    "displayName": "Subcategory",
-    "description": ""
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "category"
   },
   "options": {
     "draftAndPublish": true
@@ -19,13 +18,13 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product.product",
-      "mappedBy": "subcategories"
+      "mappedBy": "categories"
     },
-    "categories": {
+    "subcategories": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "subcategories"
+      "target": "api::subcategory.subcategory",
+      "mappedBy": "categories"
     }
   }
 }
